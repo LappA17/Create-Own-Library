@@ -1,15 +1,16 @@
 import $ from './lib/lib';
 
-$('button').on('click', function() {
-    $('div').eq(1).toggleClass('active');
+// Пропадет первый текст
+$('#first').on('click', () => {
+    $('div').eq(1).fadeOut(800); // eq(1), потому что это второй элемент, первый это див с контейнером
 });
 
-$('div').click(function() {
-    console.log($(this).index());
+// Пропадет второй текст
+$('[data-count="second"]').on('click', () => {
+    $('div').eq(2).fadeOut(800);
 });
 
-// console.log($('div').eq(2).find('.some'));
-// console.log($('.some').closest('.findme'));
-$('button').fadeIn(1800); //  Теперь кнопка баттон появляется если fadeIn или исчезает если fadeOut через 1800 мс
-
-// console.log($('button').html('Hello'));
+// Все два текста пропадут
+$('button').eq(2).on('click', () => {
+    $('.w-500').fadeOut(800);
+});

@@ -1,0 +1,7 @@
+// Что бы в style.css не было огромного болота с импортами, мы предваритель в папке делаем все импорты и потом уже в общую папку style
+@import './align.scss';
+@import './display.scss';
+@import './font.scss';
+@import './margin.scss';
+@import './padding.scss';
+@import './sizes.scss';

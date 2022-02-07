@@ -1,0 +1,115 @@
+// Тут будут кнопки для интерфейса
+
+.btn {
+    display: inline-block; // потому что мы не знаем к какому блоку будет применяться этот класс(то ли див или батен или другое)
+    padding: 10px 20px;
+    border: 1px solid $primary; // primary это переменная с цветами
+    background-color: transparent; // прозрачная
+    border-radius: 4px;
+    cursor: pointer; // Для того что бы у пользователя мышка менялась когда он наводит на эту кнопку
+    color: $dark;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle; // потому что у нас display inline-block 
+    font-size: 14px;
+    line-height: 1.5;
+    transition: all 0.2s; // transition это плавность анимации
+    &:hover { // наведение на кнопку
+        background-color: lighten($primary, 10%); /* Тут очень важно потому что в припроцессоре САСС можно задвать функции
+в данном случае мы хотим делать чуточку светлее и для этого используем фцию lighten. 10% - на 10 процентов будет светлее*/
+        color: #fff;
+    }
+    
+    /* Очень важно ! Мы создаем новые классы primary, success, danger, dark. И что бы применять эти классы к нужной нам кнопки
+мы просто прописываем "btn btn-primary", те через пробел после бтн еще раз бтн и нужный нам класс ! */
+    &-primary { // Это название нового класса, типа btn primary !!!
+        background-color: $primary;
+        border-color: $primary;
+        color: #fff;
+        &:hover { // кнопка реагирует на наведение
+            background-color: darken($primary, 10%); // фция которая затемняет кнопку
+        }
+    }
+
+    &-success {
+        background-color: $success;
+        border-color: $success;
+        color: #fff;
+        &:hover { 
+            background-color: darken($success, 10%); 
+        }
+    }
+
+    &-danger { 
+        background-color: $danger;
+        border-color: $danger;
+        color: #fff;
+        &:hover { 
+            background-color: darken($danger, 10%); 
+        }
+    }
+
+    &-warning { 
+        background-color: $warning;
+        border-color: $warning;
+        color: #fff;
+        &:hover { 
+            background-color: darken($warning, 10%); 
+        }
+    }
+
+    &-dark { 
+        background-color: $dark;
+        border-color: $dark;
+        color: #fff;
+        &:hover { 
+            background-color: darken($dark, 10%); 
+        }
+    }
+
+    &-outline-primary { // Мы тут не устанавливаем background-color и оно будет такое как у .btn - прозрачное
+        border-color: $primary;
+        color: $primary;
+        &:hover { 
+            background-color: $primary;
+        }
+    }
+
+    &-outline-success {
+        border-color: $success;
+        color: $success;
+        &:hover { 
+            background-color: $success;
+        }
+    }
+
+    &-outline-danger {
+        border-color: $danger;
+        color: $danger;
+        &:hover { 
+            background-color: $danger;
+        }
+    }
+
+    &-outline-warning {
+        border-color: $warning;
+        color: $warning;
+        &:hover { 
+            background-color: $warning;
+        }
+    }
+
+    &-outline-dark {
+        border-color: $dark;
+        color: $dark;
+        &:hover { 
+            background-color: $dark;
+        }
+    }
+
+    // Иногда нужно что бы кнопка была блочного формата
+    &-block {
+        display: block;
+        width: 100%; // блочный элемент и так занимает сто процентов, но иногда бывают конфликты классов
+    }
+}

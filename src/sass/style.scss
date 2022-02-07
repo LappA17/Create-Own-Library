@@ -1,16 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-button {
-    width: 150px;
-    height: 40px;
-    background-color: lightblue;
-    text-align: center;
-}
+/* Создаем с _  все остальные подфайы импортируемые что бы каждый раз при сохранение таких файликов, 
+компилировался общий файл стилей в style.scss, а не каждый отдельный файлик, и галп об этом знает*/
 
-.active {
-    font-size: 20px;
-    color: red;
-}
+// Все что мы делаем в других файликах scss НУЖНО ИМПОРТИРОВАТЬ В ЭТУ ГЛАВНУЮ
+@import './general/base.scss';
+@import './general/variables.scss';
+@import './general/typography.scss';
+@import './components/ui.scss';
+@import './helpers/classes.scss';
