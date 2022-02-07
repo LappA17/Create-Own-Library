@@ -84,3 +84,40 @@ $.prototype.fadeOut = function(dur, fin) { // display не нужен потом
 
     return this;
 };
+
+// Создадим анимацию что бы код автоматическо определял НАМ НЕОБХОДИМО ПОКАЗАТЬ ИЛИ СКРЫТЬ ЭЛЕМЕНТ
+$.prototype.fadeToggle = function(dur, display, fin) { 
+    for (let i = 0; i < this.length; i++) {
+
+// Создадим вилку : показан ли данный элемент который сейчас перебирается на странице в текущий момент
+/* Сейчас мы не можем проверить инлайн стили, те мы не можем обратиться к параметру style и display у объекта this, потому что в верстке
+обычно прописаны не инлайн стили, а стили прописани в css коде. И сейчас мы должны понять показан ли элемент на странице.
+Сейчас зайдя на страничку и выделя любой элемент в консоли нам покажут computed, мы на нее переходим и мы уведим какие свойства есть у 
+этого элемента и их мы можем получить с помощью метода getComputedStyle.
+ */
+        if(window.getComputedStyle(this[i]).display === "none") { /* если элемент скрыт то будет появлятся вся эта анимация для 
+появления элемента на страничке, те функция fadeIn ! */
+            this[i].style.display = display || "block"; 
+
+            const _fadeIn = (complection) => {
+                this[i].style.opacity = complection;
+            }; 
+
+            const ani = this.animateOverTime(dur, _fadeIn, fin); 
+            requestAnimationFrame(ani);
+        } else { // сюда поместим весь код с функции fadeOut !
+            const _fadeOut = (complection) => {
+                this[i].style.opacity = 1 - complection;
+                if (complection === 1) {
+                    this[i].style.display = 'none';
+                }
+            };
+    
+            const ani = this.animateOverTime(dur, _fadeOut, fin);
+            requestAnimationFrame(ani);
+        }
+    }
+
+    return this;
+
+};
