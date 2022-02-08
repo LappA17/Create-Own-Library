@@ -1,0 +1,42 @@
+.dropdown {
+    position: relative; // потому что то скрытое меню которое у нас будет, оно будет абсолютно спозиционираванно, относительно самого блока, что бы оно не куда не съезжяло
+    display: inline-block;
+    &-toggle {
+        &:after { // внутри псевдоэлемента создадим стрелочку что бы было понятно что это дропдаун меню
+            content: '';
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: 3px;
+            border-top: 4px solid; // благодаря бордерам создали стрелочку
+            border-right: 4px solid transparent;
+            border-bottom: 0;
+            border-left: 4px solid transparent;
+        }
+    }
+    
+    &-menu {
+        position: absolute;
+        top: 100%; /* Менюшка выпадает из элемента потому что позишин абсолют, то полностью высота блока дропдаун ровняется высоте кнопки
+менюшка должна прижиматься строго снизу. Когда указываем положение топ 100% то высота меню будет ровна высоте кнопке */
+        left: 0; // менюшку прижимаем к триггеру
+        z-index: 1000; // что бы дропдаун меню перекрывало отсальные элементы
+        display: none;
+        border: 1px solid rgba(0,0,0,15);
+        border-radius: 2px;
+        background-color: #fff;
+        min-width: 100%; // что бы у меню не было ограничение в размерах 
+        padding: 10px 0px;
+    }
+     &-item {
+         display: block;
+         width: 100%; // сто процентов родителя
+         padding: 7px 10px;
+         color: $dark;
+         background-color: transparent;
+         border: 0;
+         text-decoration: none; // если будут ссылки
+         &:hover {
+             background-color: rgba(0,0,0, .05)
+         }
+     }
+}
