@@ -1,0 +1,47 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0, .5);
+    &-dialog {
+        max-width: 500px;
+        margin: 40px auto;
+    }
+    &-content {
+        position: relative; // Потому что у нас есть крестик, который мы будем абсолютно позиционировать относительно родителя
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0, .2);
+        border-radius: 4px;
+        max-height: 80vh;  // Будет занимать 80 процентов от видимой части
+        overflow-y: auto; // Позволит скролить модельное окно если вдруг там много контента
+        .close { // прямое наследование внутри мод окна
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 30px;
+            color: #000;
+            opacity: .5;
+            font-weight: 700;
+            border: none;
+            background-color: transparent;
+            cursor: pointer; // самое главное свойство, что бы пользователь точно мог знать что он можеь кликнуть на крестик
+        }
+    }
+    &-header, &-body {
+        padding: 15px;
+        border-bottom: 1px solid #dee2e6; // Будет граница между телом и тайтолом
+    }
+    &-title {
+        font-weight: 500;
+        font-size: 20px;
+    }
+    &-footer {
+        padding: 15px;
+    }
+}
