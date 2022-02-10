@@ -1,0 +1,81 @@
+.carousel {
+    display: block;
+    margin: 0 auto;
+    width: 900px;
+    position: relative; // что бы в будущем асболютно спозиционировать стрелки
+    &-indicators { // снизу должны быть точечки при клике на которые будет переключение слайдера
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 15; // что бы они перекрывали всё
+        display: flex;
+        justify-content: center;
+        margin-right: 15%;
+        margin-left: 15%;
+        list-style: none; // что бы не было номерации
+        li {
+            box-sizing: content-box;
+            flex: 0 1 auto;
+            width: 30px;
+            height: 6px;
+            margin-right: 3px;
+            margin-left: 3px;
+            cursor: pointer;
+            background-color: #fff;
+            background-clip: padding-box;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            opacity: .5;
+            transition: opacity .6s ease ; // так как я буду менять прозрачность у активного элемента , ease - анимация
+        }
+        .active {
+            opacity: 1;
+        }
+    }
+    &-inner {
+        width: 100%; // sto procentow od roditelya
+        height: 500px;
+        position: relative;
+        overflow: hidden; // позволяет скрывать тот контент который вылазит за пределы этого блока
+    }
+    &-slides {
+        height: 100%;
+        display: flex; // что бы установить все слайды в одну полосу
+    }
+    &-item {
+        height: 100%;
+        img {
+            width: 100%; // ширина и высотка картинки будет подстраиваться под ширину и высоты слайда
+            height: 100%;
+            object-fit: cover;/* И ЧТО БЫ ПРОПОРЦИИ КАРТИНКИ НЕ РУШИЛИСЬ(МОГУТ БЫТЬ 16:9, ВЕРТИКАЛЬНЫЕ И ТД КАРТИНКА)
+обджект фит: кавер - изображение автоматически будет подстраиваться под этот блок */
+        }
+    }
+    &-prev, &-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 1; // что бы были на переднем плане
+        display: flex;
+        justify-content: center;// внутри у нас есть спан в которой находится иконка
+        align-items: center;
+        width: 15%;
+        color: #fff;
+        opacity: .5;
+        text-align: center;
+        font-size: 40px;
+        transition: opacity .15s ease; // для анимации
+        text-decoration: none; // стрелки это ссылки
+        &:hover { // что бы при наведение менялось прозрачность
+            opacity: .9;
+            background-color: rgba(0,0,0, .2);
+        }
+    }
+    &-prev {
+        left: 0;
+    }
+    &-next {
+        right: 0;
+    }
+}
